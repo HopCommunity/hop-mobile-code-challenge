@@ -22,6 +22,7 @@ Acceptance criteria
 Submission Tips
 ========================
 * We will be looking at the quality, readability, and structure of your code.
+* Use of SwiftUI is a major plus
 * Be ready to explain your code.
 * Make sure your submission accurately reflects your development style.
 * Commit early and often, with good messages.
