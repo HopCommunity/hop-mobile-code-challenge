@@ -10,12 +10,21 @@ import SwiftUI
 struct PhotoGalleryView: View {
     @ObservedObject private var viewModel = PhotoGalleryViewModel()
     
+    @State private var showingAlert = false
+    
     var body: some View {
         List(viewModel.photos) { photo in
             Text(photo.title)
         }
         .onAppear {
             self.viewModel.getPhotos()
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Error fetching photos"),
+                  message: Text("\(viewModel.networkError?.localizedDescription ?? "")"))
+        }
+        .onReceive(viewModel.$networkError) { output in
+            showingAlert = (output != nil)
         }
     }
 }
