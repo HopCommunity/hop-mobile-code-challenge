@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		755A1A5E258FD29F00FA16CF /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A1A5D258FD29F00FA16CF /* AsyncImage.swift */; };
+		755A1A65258FDA5900FA16CF /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A1A64258FDA5900FA16CF /* ImageLoader.swift */; };
 		7573F3A7258D665D003DBB1C /* PhotoGalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3A6258D665D003DBB1C /* PhotoGalleryApp.swift */; };
 		7573F3A9258D665D003DBB1C /* PhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3A8258D665D003DBB1C /* PhotoGalleryView.swift */; };
 		7573F3AB258D665D003DBB1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7573F3AA258D665D003DBB1C /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		755A1A5D258FD29F00FA16CF /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		755A1A64258FDA5900FA16CF /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		7573F3A3258D665D003DBB1C /* PhotoGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7573F3A6258D665D003DBB1C /* PhotoGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryApp.swift; sourceTree = "<group>"; };
 		7573F3A8258D665D003DBB1C /* PhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryView.swift; sourceTree = "<group>"; };
@@ -84,6 +88,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		755A1A5C258FD27900FA16CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7573F3A8258D665D003DBB1C /* PhotoGalleryView.swift */,
+				755A1A5D258FD29F00FA16CF /* AsyncImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		755A1A62258FD89D00FA16CF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7573F3A6258D665D003DBB1C /* PhotoGalleryApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		755A1A63258FD8C400FA16CF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7573F3EC258D8615003DBB1C /* PhotoGalleryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		7573F39A258D665D003DBB1C = {
 			isa = PBXGroup;
 			children = (
@@ -107,11 +136,11 @@
 		7573F3A5258D665D003DBB1C /* PhotoGallery */ = {
 			isa = PBXGroup;
 			children = (
-				7573F3A6258D665D003DBB1C /* PhotoGalleryApp.swift */,
+				755A1A62258FD89D00FA16CF /* App */,
+				755A1A5C258FD27900FA16CF /* Views */,
+				755A1A63258FD8C400FA16CF /* ViewModels */,
 				7573F3F8258D8D3B003DBB1C /* Models */,
 				7573F3D4258D6CBC003DBB1C /* Networking */,
-				7573F3A8258D665D003DBB1C /* PhotoGalleryView.swift */,
-				7573F3EC258D8615003DBB1C /* PhotoGalleryViewModel.swift */,
 				7573F3AA258D665D003DBB1C /* Assets.xcassets */,
 				7573F3AF258D665E003DBB1C /* Info.plist */,
 				7573F3AC258D665E003DBB1C /* Preview Content */,
@@ -151,6 +180,7 @@
 				7573F3DA258D6DA4003DBB1C /* APIError.swift */,
 				7573F3E7258D81F5003DBB1C /* PhotoGalleryEndpoint.swift */,
 				7573F3D5258D6D4A003DBB1C /* APIService.swift */,
+				755A1A64258FDA5900FA16CF /* ImageLoader.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -296,6 +326,8 @@
 				7573F3ED258D8615003DBB1C /* PhotoGalleryViewModel.swift in Sources */,
 				7573F3A9258D665D003DBB1C /* PhotoGalleryView.swift in Sources */,
 				7573F3E8258D81F5003DBB1C /* PhotoGalleryEndpoint.swift in Sources */,
+				755A1A5E258FD29F00FA16CF /* AsyncImage.swift in Sources */,
+				755A1A65258FDA5900FA16CF /* ImageLoader.swift in Sources */,
 				7573F3DB258D6DA4003DBB1C /* APIError.swift in Sources */,
 				7573F3A7258D665D003DBB1C /* PhotoGalleryApp.swift in Sources */,
 				7573F3D6258D6D4A003DBB1C /* APIService.swift in Sources */,

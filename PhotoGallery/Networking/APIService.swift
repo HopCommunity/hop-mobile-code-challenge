@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 struct APIService {
+    static let instance = APIService()
+    
     func request<T>(with urlRequest: URLRequest) -> AnyPublisher<T, APIError> where T: Decodable {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
