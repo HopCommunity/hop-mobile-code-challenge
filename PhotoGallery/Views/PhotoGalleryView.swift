@@ -17,9 +17,12 @@ struct PhotoGalleryView: View {
             List(viewModel.photos) { photo in
                 VStack {
                     Text(photo.title)
-                    if let url = URL(string: photo.thumbnailUrl) {
-                        AsyncImage(url: url, placeholder: Text("Loading..."))
-                            .aspectRatio(contentMode: .fit)
+                    if let thumbnailURL = URL(string: photo.thumbnailUrl),
+                       let imageURL = URL(string: photo.url) {
+                        NavigationLink(destination: AsyncImage(url: imageURL, placeholder: Text("Loading..."))) {
+                            AsyncImage(url: thumbnailURL, placeholder: Text("Loading..."))
+                                .aspectRatio(contentMode: .fit)
+                        }
                     }
                 }
             }
