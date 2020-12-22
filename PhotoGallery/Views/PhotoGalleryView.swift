@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhotoGalleryView: View {
-    @ObservedObject private var viewModel = PhotoGalleryViewModel()
+    @ObservedObject private var viewModel = PhotoGalleryViewModel(apiService: APIService.instance)
     
     @State private var showingAlert = false
     

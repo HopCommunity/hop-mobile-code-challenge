@@ -10,14 +10,19 @@ import Combine
 import SwiftUI
 
 class PhotoGalleryViewModel: ObservableObject {
+    private let apiService: ServiceProtocol
     @Published var photos = [Photo]()
     @Published var networkError: APIError?
     
     var cancellables = Set<AnyCancellable>()
     
+    init(apiService: ServiceProtocol) {
+        self.apiService = apiService
+    }
+    
     func getPhotos() {
         let urlRequest = PhotoGalleryEndpoint.photos.urlRequest
-        let cancellable = APIService.instance.request(with: urlRequest)
+        let cancellable = apiService.request(with: urlRequest)
             .sink(receiveCompletion: { result in
                 switch result {
                 case .failure(let error):

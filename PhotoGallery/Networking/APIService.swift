@@ -8,7 +8,12 @@
 import Foundation
 import Combine
 
-struct APIService {
+protocol ServiceProtocol {
+    func request<T>(with urlRequest: URLRequest) -> AnyPublisher<T, APIError> where T: Decodable
+}
+
+struct APIService: ServiceProtocol {
+
     static let instance = APIService()
     
     func request<T>(with urlRequest: URLRequest) -> AnyPublisher<T, APIError> where T: Decodable {
