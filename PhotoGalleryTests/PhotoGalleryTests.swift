@@ -19,9 +19,33 @@ class PhotoGalleryTests: XCTestCase {
     }
 
     func testAPIServiceRequest_noPhotos() throws {
-        let vm = PhotoGalleryViewModel(apiService: MockAPIService.instance)
+        let photos: [Photo] = []
+        let data = try JSONEncoder().encode(photos)
+        let vm = PhotoGalleryViewModel(apiService: MockAPIService(data: data))
         vm.getPhotos()
-        XCTAssert(vm.photos.count == 0)
+        XCTAssert(vm.photos.count == photos.count)
+    }
+    
+    func testAPIServiceRequest_onePhoto() throws {
+        let photos = [Photo(albumId: 1, id: 1, title: "Photo", url: "URL", thumbnailUrl: "thumbnailURL")]
+        let data = try JSONEncoder().encode(photos)
+        let vm = PhotoGalleryViewModel(apiService: MockAPIService(data: data))
+        vm.getPhotos()
+        XCTAssert(vm.photos.count == photos.count)
+    }
+    
+    func testAPIServiceRequest_fivePhotos() throws {
+        let photos = [
+            Photo(albumId: 1, id: 1, title: "Photo", url: "URL", thumbnailUrl: "thumbnailURL"),
+            Photo(albumId: 1, id: 1, title: "Photo", url: "URL", thumbnailUrl: "thumbnailURL"),
+            Photo(albumId: 1, id: 1, title: "Photo", url: "URL", thumbnailUrl: "thumbnailURL"),
+            Photo(albumId: 1, id: 1, title: "Photo", url: "URL", thumbnailUrl: "thumbnailURL"),
+            Photo(albumId: 1, id: 1, title: "Photo", url: "URL", thumbnailUrl: "thumbnailURL")
+        ]
+        let data = try JSONEncoder().encode(photos)
+        let vm = PhotoGalleryViewModel(apiService: MockAPIService(data: data))
+        vm.getPhotos()
+        XCTAssert(vm.photos.count == photos.count)
     }
 
     func testPerformanceExample() throws {
