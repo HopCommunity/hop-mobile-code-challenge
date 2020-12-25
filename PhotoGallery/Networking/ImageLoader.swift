@@ -10,11 +10,14 @@ import SwiftUI
 import Combine
 
 class ImageLoader: ObservableObject {
+    private let apiService: ServiceProtocol
+    
     @Published var image: UIImage?
     private let url: URL
     private var cancellable: AnyCancellable?
     
-    init(url: URL) {
+    init(apiService: ServiceProtocol, url: URL) {
+        self.apiService = apiService
         self.url = url
     }
     
@@ -22,7 +25,7 @@ class ImageLoader: ObservableObject {
         cancel()
     }
     
-    func load() {
+    func getPhoto() {
         let urlRequest = PhotoGalleryEndpoint.photo(url: url).urlRequest
         
         // TODO: Struct 'APIService' requires that 'UIImage' conform to 'Decodable'
@@ -37,7 +40,8 @@ class ImageLoader: ObservableObject {
 //            }) {
 //                self.image = $0
 //            }
-        cancellable = URLSession.shared.dataTaskPublisher(for: urlRequest)
+        
+        cancellable = apiService.request(with: urlRequest)
             .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
             .receive(on: DispatchQueue.main)

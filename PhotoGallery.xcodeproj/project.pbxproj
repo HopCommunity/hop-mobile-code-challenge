@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		754CC8D725926C0E0067D5C8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3D5258D6D4A003DBB1C /* APIService.swift */; };
 		754CC8DE25926C5D0067D5C8 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3DA258D6DA4003DBB1C /* APIError.swift */; };
 		754CC8E225926C650067D5C8 /* PhotoGalleryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3E7258D81F5003DBB1C /* PhotoGalleryEndpoint.swift */; };
 		754CC8EA2592884B0067D5C8 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CC8E92592884B0067D5C8 /* MockAPIService.swift */; };
@@ -23,7 +22,6 @@
 		7573F3DB258D6DA4003DBB1C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3DA258D6DA4003DBB1C /* APIError.swift */; };
 		7573F3E8258D81F5003DBB1C /* PhotoGalleryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3E7258D81F5003DBB1C /* PhotoGalleryEndpoint.swift */; };
 		7573F3ED258D8615003DBB1C /* PhotoGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3EC258D8615003DBB1C /* PhotoGalleryViewModel.swift */; };
-		7573F3EE258D8615003DBB1C /* PhotoGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3EC258D8615003DBB1C /* PhotoGalleryViewModel.swift */; };
 		7573F3FA258D8D51003DBB1C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3F9258D8D51003DBB1C /* Photo.swift */; };
 		7573F3FB258D8D51003DBB1C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3F9258D8D51003DBB1C /* Photo.swift */; };
 /* End PBXBuildFile section */
@@ -345,8 +343,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7573F3FB258D8D51003DBB1C /* Photo.swift in Sources */,
-				7573F3EE258D8615003DBB1C /* PhotoGalleryViewModel.swift in Sources */,
-				754CC8D725926C0E0067D5C8 /* APIService.swift in Sources */,
 				754CC8EA2592884B0067D5C8 /* MockAPIService.swift in Sources */,
 				754CC8DE25926C5D0067D5C8 /* APIError.swift in Sources */,
 				754CC8E225926C650067D5C8 /* PhotoGalleryEndpoint.swift in Sources */,

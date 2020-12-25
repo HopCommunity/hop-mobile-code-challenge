@@ -13,12 +13,12 @@ struct AsyncImage: View {
     
     init(url: URL, placeholder: Text) {
         self.placeholder = placeholder
-        _imageLoader = StateObject(wrappedValue: ImageLoader(url: url))
+        _imageLoader = StateObject(wrappedValue: ImageLoader(apiService: APIService.instance, url: url))
     }
     
     var body: some View {
         content
-            .onAppear(perform: imageLoader.load)
+            .onAppear(perform: imageLoader.getPhoto)
     }
     
     private var content: some View {
