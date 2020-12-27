@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7546E92B259652AB008DDD89 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546E92A259652AB008DDD89 /* ImageCache.swift */; };
 		7546E93025965978008DDD89 /* ImageCacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546E92F25965978008DDD89 /* ImageCacheKey.swift */; };
+		7546E9352597AB84008DDD89 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546E9342597AB84008DDD89 /* Album.swift */; };
 		754CC8DE25926C5D0067D5C8 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3DA258D6DA4003DBB1C /* APIError.swift */; };
 		754CC8E225926C650067D5C8 /* PhotoGalleryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573F3E7258D81F5003DBB1C /* PhotoGalleryEndpoint.swift */; };
 		754CC8EA2592884B0067D5C8 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CC8E92592884B0067D5C8 /* MockAPIService.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		7546E92A259652AB008DDD89 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		7546E92F25965978008DDD89 /* ImageCacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheKey.swift; sourceTree = "<group>"; };
+		7546E9342597AB84008DDD89 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		754CC8E92592884B0067D5C8 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
 		755A1A5D258FD29F00FA16CF /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		755A1A64258FDA5900FA16CF /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		7573F3F8258D8D3B003DBB1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7546E9342597AB84008DDD89 /* Album.swift */,
 				7573F3F9258D8D51003DBB1C /* Photo.swift */,
 			);
 			path = Models;
@@ -351,6 +354,7 @@
 				7573F3DB258D6DA4003DBB1C /* APIError.swift in Sources */,
 				7573F3A7258D665D003DBB1C /* PhotoGalleryApp.swift in Sources */,
 				7573F3D6258D6D4A003DBB1C /* APIService.swift in Sources */,
+				7546E9352597AB84008DDD89 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

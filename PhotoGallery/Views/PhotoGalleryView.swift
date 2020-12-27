@@ -14,19 +14,22 @@ struct PhotoGalleryView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.photos) { photo in
-                VStack {
-                    Text(photo.title)
-                    if let thumbnailURL = URL(string: photo.thumbnailUrl),
-                       let imageURL = URL(string: photo.url) {
-                        NavigationLink(destination: AsyncImage(url: imageURL, placeholder: Text("Loading..."))) {
-                            AsyncImage(url: thumbnailURL, placeholder: Text("Loading..."))
-                                .aspectRatio(contentMode: .fit)
-                        }
-                    }
-                }
+            List(viewModel.albums) { album in
+                Text(album.title)
             }
-            .onAppear { self.viewModel.getPhotos() }
+//            List(viewModel.photos) { photo in
+//                VStack {
+//                    Text(photo.title)
+//                    if let thumbnailURL = URL(string: photo.thumbnailUrl),
+//                       let imageURL = URL(string: photo.url) {
+//                        NavigationLink(destination: AsyncImage(url: imageURL, placeholder: Text("Loading..."))) {
+//                            AsyncImage(url: thumbnailURL, placeholder: Text("Loading..."))
+//                                .aspectRatio(contentMode: .fit)
+//                        }
+//                    }
+//                }
+//            }
+            .onAppear { self.viewModel.getAlbumsAndPhotos() }
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text("Error fetching photos"),
                       message: Text("\(viewModel.networkError?.localizedDescription ?? "")"))
