@@ -14,30 +14,16 @@ struct PhotoGalleryView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.albums) { album in
-                Text(album.title)
-            }
-//            List(viewModel.photos) { photo in
-//                VStack {
-//                    Text(photo.title)
-//                    if let thumbnailURL = URL(string: photo.thumbnailUrl),
-//                       let imageURL = URL(string: photo.url) {
-//                        NavigationLink(destination: AsyncImage(url: imageURL, placeholder: Text("Loading..."))) {
-//                            AsyncImage(url: thumbnailURL, placeholder: Text("Loading..."))
-//                                .aspectRatio(contentMode: .fit)
-//                        }
-//                    }
-//                }
-//            }
-            .onAppear { self.viewModel.getAlbumsAndPhotos() }
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Error fetching photos"),
-                      message: Text("\(viewModel.networkError?.localizedDescription ?? "")"))
-            }
-            .onReceive(viewModel.$networkError) { output in
-                showingAlert = (output != nil)
-            }
-            .navigationBarTitle(Text("Photo Gallery"))
+            AlbumsGrid(albums: viewModel.albums, photos: viewModel.photos)
+                .onAppear { self.viewModel.getAlbumsAndPhotos() }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Error fetching photos"),
+                          message: Text("\(viewModel.networkError?.localizedDescription ?? "")"))
+                }
+                .onReceive(viewModel.$networkError) { output in
+                    showingAlert = (output != nil)
+                }
+                .navigationBarTitle(Text("Albums"))
         }
     }
 }

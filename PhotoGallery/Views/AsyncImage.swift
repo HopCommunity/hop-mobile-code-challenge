@@ -11,7 +11,7 @@ struct AsyncImage: View {
     @StateObject private var imageLoader: ImageLoader
     private let placeholder: Text
     
-    init(url: URL, placeholder: Text) {
+    init(url: URL, placeholder: Text = Text("Loading...")) {
         self.placeholder = placeholder
         let imageLoader = ImageLoader(apiService: APIService.instance,
                                       url: url,
