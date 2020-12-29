@@ -20,7 +20,7 @@ struct AlbumView: View {
         List(photosForAlbum()) { photo in
             if let thumbnailURL = URL(string: photo.thumbnailUrl)
                , let photoURL = URL(string: photo.url) {
-                NavigationLink(destination: AsyncImage(url: photoURL)) {
+                NavigationLink(destination: PhotoView(photo: photo)) {
                     AsyncImage(url: thumbnailURL)
                 }
             }
