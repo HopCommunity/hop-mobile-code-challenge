@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct PhotoGalleryView: View {
-    @ObservedObject private var viewModel = PhotoGalleryViewModel(apiService: APIService.instance)
+    @EnvironmentObject private var viewModel: PhotoGalleryViewModel
     
     @State private var showingAlert = false
     
     var body: some View {
         NavigationView {
-            AlbumsGrid(albums: viewModel.albums, photos: viewModel.photos)
+            AlbumsGrid()
                 .onAppear { self.viewModel.getAlbumsAndPhotos() }
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Error fetching photos"),

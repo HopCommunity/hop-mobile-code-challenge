@@ -12,6 +12,7 @@ struct PhotoGalleryApp: App {
     var body: some Scene {
         WindowGroup {
             PhotoGalleryView()
+                .environmentObject(PhotoGalleryViewModel(apiService: APIService.instance))
         }
     }
 }

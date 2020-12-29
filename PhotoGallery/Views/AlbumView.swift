@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct AlbumView: View {
+    @EnvironmentObject private var viewModel: PhotoGalleryViewModel
+    
     var body: some View {
-        Text("Album")
+        List(viewModel.albums) { album in
+            Text("Album")
+        }
     }
 }
 
