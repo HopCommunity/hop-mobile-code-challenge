@@ -22,18 +22,18 @@ struct AlbumsGrid: View {
         return VStack(alignment: .leading) {
             ForEach(0..<numberOfRows, id: \.self) { rowIndex in
                 HStack {
-                    if let url = getFirstPhotoThumbnailURL(albumId: viewModel.albums[rowIndex*2].id) {
-                        NavigationLink(destination: AlbumView()) {
+                    if let url = getFirstPhotoThumbnailURL(albumId: leftAlbum(rowIndex: rowIndex).id) {
+                        NavigationLink(destination: AlbumView(album: leftAlbum(rowIndex: rowIndex))) {
                             VStack {
-                                Text("\(viewModel.albums[rowIndex].title)")
+                                Text("\(leftAlbum(rowIndex: rowIndex).title)")
                                 AsyncImage(url: url)
                             }
                         }
                     }
-                    if let url = getFirstPhotoThumbnailURL(albumId: viewModel.albums[rowIndex*2+1].id) {
-                        NavigationLink(destination: AlbumView()) {
+                    if let url = getFirstPhotoThumbnailURL(albumId: rightAlbum(rowIndex: rowIndex).id) {
+                        NavigationLink(destination: AlbumView(album: rightAlbum(rowIndex: rowIndex))) {
                             VStack {
-                                Text("\(viewModel.albums[rowIndex].title)")
+                                Text("\(rightAlbum(rowIndex: rowIndex).title)")
                                 AsyncImage(url: url)
                             }
                         }
@@ -48,6 +48,14 @@ struct AlbumsGrid: View {
         guard let thumbnailURL = photo?.thumbnailUrl else { return nil }
         guard let url = URL(string: thumbnailURL) else { return nil }
         return url
+    }
+    
+    private func leftAlbum(rowIndex: Int) -> Album {
+        return viewModel.albums[rowIndex*2]
+    }
+    
+    private func rightAlbum(rowIndex: Int) -> Album {
+        return viewModel.albums[rowIndex*2+1]
     }
 }
 

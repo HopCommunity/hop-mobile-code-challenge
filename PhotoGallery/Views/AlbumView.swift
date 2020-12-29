@@ -10,15 +10,33 @@ import SwiftUI
 struct AlbumView: View {
     @EnvironmentObject private var viewModel: PhotoGalleryViewModel
     
+    private let album: Album
+    
+    init(album: Album) {
+        self.album = album
+    }
+    
     var body: some View {
-        List(viewModel.albums) { album in
-            Text("Album")
+        List(photosForAlbum()) { photo in
+            if let thumbnailURL = URL(string: photo.thumbnailUrl)
+               , let photoURL = URL(string: photo.url) {
+                NavigationLink(destination: AsyncImage(url: photoURL)) {
+                    AsyncImage(url: thumbnailURL)
+                }
+            }
+        }
+        .navigationTitle("Album: \(album.title)")
+    }
+    
+    private func photosForAlbum() -> [Photo] {
+        return viewModel.photos.filter { photo -> Bool in
+            return photo.albumId == album.id
         }
     }
 }
 
 struct AlbumView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumView()
+        AlbumView(album: Album(userId: 1, id: 1, title: "Preview Album"))
     }
 }
