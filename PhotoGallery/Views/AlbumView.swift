@@ -18,8 +18,7 @@ struct AlbumView: View {
     
     var body: some View {
         List(photosForAlbum()) { photo in
-            if let thumbnailURL = URL(string: photo.thumbnailUrl)
-               , let photoURL = URL(string: photo.url) {
+            if let thumbnailURL = URL(string: photo.thumbnailUrl) {
                 NavigationLink(destination: PhotoView(photo: photo)) {
                     AsyncImage(url: thumbnailURL)
                 }
