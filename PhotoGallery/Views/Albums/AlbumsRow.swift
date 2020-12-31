@@ -19,13 +19,14 @@ struct AlbumsRow: View {
     var body: some View {
         HStack {
             if let url = getFirstPhotoThumbnailURL(albumId: leftAlbum(rowIndex: rowIndex).id) {
-                NavigationLink(destination: AlbumView(album: leftAlbum(rowIndex: rowIndex))) {
+                NavigationLink(destination: PhotosForAlbumView(album: leftAlbum(rowIndex: rowIndex))) {
                     AlbumCell(title: leftAlbum(rowIndex: rowIndex).title, url: url)
                 }
             }
-            if let url = getFirstPhotoThumbnailURL(albumId: rightAlbum(rowIndex: rowIndex).id) {
-                NavigationLink(destination: AlbumView(album: rightAlbum(rowIndex: rowIndex))) {
-                    AlbumCell(title: rightAlbum(rowIndex: rowIndex).title, url: url)
+            if let rightAlbum = rightAlbum(rowIndex: rowIndex)
+               , let url = getFirstPhotoThumbnailURL(albumId: rightAlbum.id) {
+                NavigationLink(destination: PhotosForAlbumView(album: rightAlbum)) {
+                    AlbumCell(title: rightAlbum.title, url: url)
                 }
             }
         }
@@ -43,8 +44,10 @@ struct AlbumsRow: View {
         return viewModel.albums[rowIndex*2]
     }
     
-    private func rightAlbum(rowIndex: Int) -> Album {
-        return viewModel.albums[rowIndex*2+1]
+    private func rightAlbum(rowIndex: Int) -> Album? {
+        let albumIndex = rowIndex * 2 + 1
+        guard albumIndex < viewModel.albums.count else { return nil }
+        return viewModel.albums[albumIndex]
     }
 }
 
