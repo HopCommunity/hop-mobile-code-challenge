@@ -9,9 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let imageManager = ImageManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        imageManager.fetchImages()
     }
 
 
