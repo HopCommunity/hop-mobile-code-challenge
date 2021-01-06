@@ -12,21 +12,43 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let imageCellIdentifier = "imageCell"
-    let imageManager = ImageManager()
-    let numberOfCells = 30
+    var dataManager = DataManager()
+    
+    var imageData = Array<ImageModel>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        imageManager.fetchImages()
         collectionView.dataSource = self
+        dataManager.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        dataManager.fetchImages()
     }
 }
 
-extension ImageViewController: UICollectionViewDataSource{
+extension ImageViewController: UICollectionViewDataSource, DataManagerDelegate{
+    func didUpdateData(_ dataManager: DataManager, images: Array<ImageModel>) {
+
+        self.imageData = images
+        
+        DispatchQueue.main.async {
+            if (self.collectionView.numberOfItems(inSection: 0) == 0){
+                self.collectionView.reloadData()
+            } else {
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print("failed with error: \(error)")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfCells
+        
+        return imageData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
