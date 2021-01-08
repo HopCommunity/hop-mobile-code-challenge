@@ -17,7 +17,6 @@
 		8D12212D25A3C2ED00757AF6 /* ImageGalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12212C25A3C2ED00757AF6 /* ImageGalleryUITests.swift */; };
 		8D12214125A3D02F00757AF6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12214025A3D02F00757AF6 /* DataManager.swift */; };
 		8D12215225A622D200757AF6 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12215125A622D200757AF6 /* ImageModel.swift */; };
-		8D12217825A64F7500757AF6 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12217725A64F7500757AF6 /* ImageData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		8D12212E25A3C2ED00757AF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D12214025A3D02F00757AF6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8D12215125A622D200757AF6 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
-		8D12217725A64F7500757AF6 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +138,6 @@
 			children = (
 				8D12214025A3D02F00757AF6 /* DataManager.swift */,
 				8D12215125A622D200757AF6 /* ImageModel.swift */,
-				8D12217725A64F7500757AF6 /* ImageData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D12210F25A3C2E800757AF6 /* ImageViewController.swift in Sources */,
-				8D12217825A64F7500757AF6 /* ImageData.swift in Sources */,
 				8D12215225A622D200757AF6 /* ImageModel.swift in Sources */,
 				8D12210B25A3C2E800757AF6 /* AppDelegate.swift in Sources */,
 				8D12210D25A3C2E800757AF6 /* SceneDelegate.swift in Sources */,
