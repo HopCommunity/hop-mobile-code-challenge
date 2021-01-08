@@ -19,8 +19,8 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        collectionView.dataSource = self
         dataManager.delegate = self
+        collectionView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +34,7 @@ extension ImageViewController: DataManagerDelegate{
         self.imageData = images
         
         DispatchQueue.main.async {
+            // Reload collectionView items
             if (self.collectionView.numberOfItems(inSection: 0) == 0){
                 self.collectionView.reloadData()
             } else {
