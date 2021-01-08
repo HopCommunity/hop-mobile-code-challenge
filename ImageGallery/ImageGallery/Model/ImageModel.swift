@@ -13,4 +13,12 @@ struct ImageModel: Decodable {
     let title: String
     let url: String
     let thumbnailUrl: String
+    
+    init(){
+        self.albumId = 0
+        self.id = 0
+        self.title = ""
+        self.url = ""
+        self.thumbnailUrl = ""
+    }
 }

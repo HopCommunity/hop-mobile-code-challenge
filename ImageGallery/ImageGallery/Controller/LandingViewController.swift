@@ -1,13 +1,14 @@
 //
-//  ViewController.swift
+//  LandingViewController.swift
 //  ImageGallery
 //
-//  Created by Slayer on 1/4/21.
+//  Created by Slayer on 1/7/21.
 //
 
 import UIKit
 
-class ImageViewController: UIViewController {
+
+class LandingViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -20,6 +21,8 @@ class ImageViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         dataManager.delegate = self
+        
+        collectionView.delegate = self
         collectionView.dataSource = self
     }
     
@@ -28,7 +31,7 @@ class ImageViewController: UIViewController {
     }
 }
 
-extension ImageViewController: DataManagerDelegate{
+extension LandingViewController: DataManagerDelegate{
     // Reload collectionView upon data update
     func didUpdateData(_ dataManager: DataManager, images: Array<ImageModel>) {
         self.imageData = images
@@ -48,7 +51,7 @@ extension ImageViewController: DataManagerDelegate{
     }
 }
 
-extension ImageViewController: UICollectionViewDataSource{
+extension LandingViewController: UICollectionViewDataSource{
     
     // Set image for collection view cell
     func setCollectionViewCellImage(_ cellImage: UIImage, forCell cell: UICollectionViewCell){
@@ -56,12 +59,12 @@ extension ImageViewController: UICollectionViewDataSource{
         DispatchQueue.main.async {
             let imageView = UIImageView(frame: cell.contentView.frame)
             
-            // creating circular image frame
+            // Creating circular image frame
             imageView.layer.cornerRadius = imageView.frame.size.height / 2
             imageView.clipsToBounds = true
             imageView.contentMode = .scaleAspectFit
             
-            // set image
+            // Set image
             imageView.image = cellImage
          
             cell.contentView.addSubview(imageView)
@@ -93,5 +96,19 @@ extension ImageViewController: UICollectionViewDataSource{
         return cell
     }
     
+}
+
+extension LandingViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cellData: ImageModel = imageData[indexPath.row]
+        print("selected cell at: \(imageData[indexPath.row])")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let detailVC: DetailViewController = storyboard.instantiateViewController(identifier: "DetailViewController")
+        detailVC.imageData = cellData
+        
+        showDetailViewController(detailVC, sender: self)
+    }
 }
 
