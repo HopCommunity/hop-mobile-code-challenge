@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -143,11 +144,16 @@
                                     <constraint firstItem="QNm-ZN-0PM" firstAttribute="centerX" secondItem="C1v-4s-AVA" secondAttribute="centerX" id="sce-oj-lKa"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-Og-uc5">
-                                <rect key="frame" x="335" y="24" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-Og-uc5">
+                                <rect key="frame" x="339" y="25" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="bj4-nq-I7w"/>
+                                    <constraint firstAttribute="height" constant="50" id="ncD-2y-jW5"/>
+                                </constraints>
                                 <color key="tintColor" red="0.20859050749999999" green="0.70749723909999995" blue="0.68477845189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button" image="xmark" catalog="system"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                </state>
                                 <connections>
                                     <action selector="closeButtonTouched:" destination="3Sp-aq-JGn" eventType="touchUpInside" id="928-pe-lKO"/>
                                 </connections>
@@ -172,6 +178,7 @@
                         <viewLayoutGuide key="safeArea" id="8pS-Im-TGC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Xr5-Og-uc5" firstAttribute="top" secondItem="8pS-Im-TGC" secondAttribute="top" constant="25" id="6fw-OT-dfd"/>
                             <constraint firstItem="ZNu-nU-YCi" firstAttribute="top" secondItem="C1v-4s-AVA" secondAttribute="bottom" id="9Sh-VJ-rzG"/>
                             <constraint firstItem="C1v-4s-AVA" firstAttribute="top" secondItem="8pS-Im-TGC" secondAttribute="top" constant="44" id="AFF-hu-ptF"/>
                             <constraint firstItem="Jx8-AY-1VJ" firstAttribute="centerX" secondItem="8pS-Im-TGC" secondAttribute="centerX" id="B5c-H6-nnc"/>
@@ -181,6 +188,7 @@
                             <constraint firstItem="ZNu-nU-YCi" firstAttribute="centerX" secondItem="8pS-Im-TGC" secondAttribute="centerX" id="atL-UP-qSu"/>
                             <constraint firstItem="Gn0-fa-UBC" firstAttribute="leading" secondItem="8pS-Im-TGC" secondAttribute="leading" constant="20" id="bTb-aL-mhk"/>
                             <constraint firstItem="8pS-Im-TGC" firstAttribute="trailing" secondItem="C1v-4s-AVA" secondAttribute="trailing" id="g15-bU-c9D"/>
+                            <constraint firstItem="8pS-Im-TGC" firstAttribute="trailing" secondItem="Xr5-Og-uc5" secondAttribute="trailing" constant="25" id="k0k-BH-crg"/>
                         </constraints>
                     </view>
                     <connections>

@@ -13,11 +13,16 @@ class DetailViewController: UIViewController{
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    var loadingIcon = UIActivityIndicatorView(style: .large)
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.displayLoadingIcon()
+        
+        // Display title data
         titleLabel.text = imageData.title
+        
         let url = URL(string: imageData.url)
         
         DispatchQueue.global().async {
@@ -33,6 +38,28 @@ class DetailViewController: UIViewController{
                     self.setImage(image)
                 }
             }
+            
+            self.removeLoadingIcon()
+        }
+    }
+    
+    // Displays loading icon for imageView, which must be downloaded
+    func displayLoadingIcon(){
+        view.addSubview(loadingIcon)
+        
+        // Center loading icon
+        loadingIcon.translatesAutoresizingMaskIntoConstraints = false
+        loadingIcon.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        loadingIcon.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        
+        loadingIcon.startAnimating()
+    }
+    
+    func removeLoadingIcon(){
+        DispatchQueue.main.async {
+            // Stop and remove loading icon
+            self.loadingIcon.stopAnimating()
+            self.loadingIcon.removeFromSuperview()
         }
     }
     

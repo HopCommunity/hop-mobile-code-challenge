@@ -11,6 +11,7 @@ import UIKit
 class LandingViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var loadingIcon = UIActivityIndicatorView(style: .large)
     
     let imageCellIdentifier = "imageCell"
     var dataManager = DataManager()
@@ -32,8 +33,26 @@ class LandingViewController: UIViewController {
 }
 
 extension LandingViewController: DataManagerDelegate{
+    func didStartDataLoad() {
+        // Add loading icon
+        view.addSubview(loadingIcon)
+        
+        // Center loading icon
+        loadingIcon.translatesAutoresizingMaskIntoConstraints = false
+        loadingIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loadingIcon.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        loadingIcon.startAnimating()
+    }
+    
     // Reload collectionView upon data update
     func didUpdateData(_ dataManager: DataManager, images: Array<ImageModel>) {
+        // Stop animating loading icon, request is over
+        DispatchQueue.main.async {
+            self.loadingIcon.stopAnimating()
+            self.loadingIcon.removeFromSuperview()
+        }
+        
         self.imageData = images
         
         DispatchQueue.main.async {
@@ -101,7 +120,6 @@ extension LandingViewController: UICollectionViewDataSource{
 extension LandingViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellData: ImageModel = imageData[indexPath.row]
-        print("selected cell at: \(imageData[indexPath.row])")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         

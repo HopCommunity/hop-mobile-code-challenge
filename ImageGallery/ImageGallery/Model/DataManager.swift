@@ -8,6 +8,7 @@
 import Foundation
 
 protocol DataManagerDelegate{
+    func didStartDataLoad()
     func didUpdateData(_ dataManager: DataManager, images: Array<ImageModel>)
     func didFailWithError(error: Error)
 }
@@ -29,6 +30,7 @@ struct DataManager {
             let task = session.dataTask(with: url, completionHandler: parseOutput(data: response: error:))
             
             task.resume()
+            self.delegate?.didStartDataLoad()
         }
     }
     
