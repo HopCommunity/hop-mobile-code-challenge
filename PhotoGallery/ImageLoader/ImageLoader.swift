@@ -40,8 +40,9 @@ class ImageLoader: ObservableObject {
         
         let urlRequest = PhotoGalleryEndpoint.photo(url: url).urlRequest
         
-        // TODO: Struct 'APIService' requires that 'UIImage' conform to 'Decodable'
 //        cancellable = apiService.request(with: urlRequest)
+//            .mapError { _ in APIError.unknown }
+//            .receive(on: DispatchQueue.main)
 //            .sink(receiveCompletion: { result in
 //                switch result {
 //                case .failure(_):
@@ -49,10 +50,9 @@ class ImageLoader: ObservableObject {
 //                case .finished:
 //                    break
 //                }
-//            }) {
-//                self.image = $0
-//            }
-        
+//            }, receiveValue: { [weak self] response in
+//                self?.image = UIImage(data: response.data)
+//            })
         cancellable = apiService.request(with: urlRequest)
             .subscribe(on: Self.imageProcessingQueue)
             .map { UIImage(data: $0.data) }
